@@ -10,11 +10,12 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-#load the PDF
+#load the document
 # loader = PyPDFLoader("Test_Transcript_1.pdf")
 loader = TextLoader("./test_transcript_1.txt")
 documents = loader.load()
 
+#split the document into manageable chunks for the vector db
 text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
 texts = text_splitter.split_documents(documents)
 
@@ -42,12 +43,12 @@ with get_openai_callback() as cb:
     qa = RetrievalQA.from_chain_type(llm=ChatOpenAI(model="gpt-3.5-turbo"), chain_type="stuff", retriever=retriever, return_source_documents=True)
     #pdf_qa = ChatVectorDBChain.from_llm(OpenAI(temperature=0.9, model_name="gpt-3.5-turbo"),vectordb, return_source_documents=True)
     # query = "You are a helpful Senior UX Designer whose task is to help Junior UX Designers and non-designers improve their interview facilitation skills, particularly their ability to ask meaningful follow up questions. Given an interview transcript, create a set of potential follow-up questions that the interviewer can ask in their next interview sessions or send via e-mail."
-    prompt = "Assist junior designers and non-designers in enhancing their interview skills, especially in asking insightful follow-ups. Use the provided interview transcript to devise potential questions for future sessions or email communication."
+    prompt = "Use the provided interview transcript to devise potential questions for future sessions or email communication."
     #result = pdf_qa({"question": query, "chat_history": ""})
     result = qa({"query": prompt})
     print("Answer:")
     #print(result["answer"])
-    print(result['result'])
+    print(result)
     print('----------')
     print(f"Total Tokens: {cb.total_tokens}")
     print(f"Prompt Tokens: {cb.prompt_tokens}")
