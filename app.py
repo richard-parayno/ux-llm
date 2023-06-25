@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
-from forms import LLMParamsForm
+from forms import LLMParamsForm, LLMConfidenceForm
 from poc import llm_process #import llm processing logic
+from confidence_test import ct_process
 import os
 
 app = Flask(__name__)
@@ -28,6 +29,16 @@ def index():
         
         #return redirect(url_for('index'))  # or redirect to a success page
     return render_template('index.html', form=form, result=result)
+
+@app.route('/confidence-test', methods=['GET', 'POST'])
+def confidence_test():
+    form = LLMConfidenceForm()
+    result = None #init result
+    if form.validate_on_submit():
+        result = ct_process(form.question_answer.data)
+
+    return render_template('confidence_test.html', form=form, result=result)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
