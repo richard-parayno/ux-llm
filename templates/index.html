@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Research Input</title>
+</head>
+<body>
+    <h1>Enter Research Information</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.goal.label }}<br>
+            {{ form.goal }}
+        </p>
+        <p>
+            {{ form.questions.label }}<br>
+            {{ form.questions }}
+        </p>
+        <p>
+            {{ form.hypotheses.label }}<br>
+            {{ form.hypotheses }}
+        </p>
+        <p>
+            {{ form.interview_transcripts.label }}<br>
+            {{ form.interview_transcripts }}
+        </p>
+        <p>
+            {{ form.submit() }}
+        </p>
+
+    </form>
+    <!-- display result -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    {% if result %}
+        <h2>Result:</h2>
+        <p>{{ result }}</p>
+    {% endif %}
+</body>
+</html>
