@@ -12,7 +12,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-def ct_process(text_input):
+def ct_process(text_input, model_temperature):
     text_input = text_input
 
     #text_input = "I: Can you elaborate the process ng pag-cocommute niyo po. So mula po sa, kung saan po kayo nagstart hanggang sa destination niyo. R: Okay. So from my house. I used the Grab App going to Ibayo, Town Center in Paranaque. And then from there, we took another Grab going to BGC. After we–we had a meeting with friends–so after that we took a cab na. From the cab we went to BGC directly–I mean from BGC we dropped by Ibayo and then to my house. That was the last time I had commuted."
@@ -20,7 +20,7 @@ def ct_process(text_input):
     prompt = """
     You are a helpful Senior UX Designer that aids Junior UX Designers and non-designers improve their interview facilitation skills.
 
-    Given the following question/answer pair, generate as many follow-up questions as you can.
+    Given the following question/answer pair, generate 5 quality follow-up questions. Make sure to relate the follow-up questions to the given information below.
 
     % QUESTION ANSWER PAIR:
     {text_input}
@@ -30,7 +30,7 @@ def ct_process(text_input):
     prompt_template = PromptTemplate(template=prompt, input_variables=["text_input"])
 
     with get_openai_callback() as cb:
-        llm = OpenAI(temperature=0.3, max_tokens=2056)
+        llm = OpenAI(temperature=0.6, max_tokens=2056)
         chain = LLMChain(llm=llm,
                         prompt=prompt_template,
                         verbose=True)
