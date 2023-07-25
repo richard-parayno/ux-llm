@@ -18,8 +18,8 @@
                 <div class="mb-8">
                     <h3 class="font-bold text-xl mb-3">Features</h3>
                     <ul class="list-disc list-inside">
+                        <li><a href="#" class="text-blue-600">Follow-up Question Generator</a></li>
                         <li><a href="#" class="text-blue-600">Confidence Test</a></li>
-                        <li><a href="#" class="text-blue-600">UX LLM</a></li>
                     </ul>
                 </div>
             </div>
@@ -27,38 +27,39 @@
             <div class="border-t border-gray-300"></div>
             <!-- Company Details -->
             <div class="p-4">
-                <p class="text-sm text-gray-600">Makisu.co LLC DBA NewsletterIQ.com</p>
-                <p class="text-sm text-gray-600">2261 Market Street, #5247</p>
-                <p class="text-sm text-gray-600">San Francisco, CA 94114-1612</p>
-                <p class="text-sm text-gray-600">support@newsletteriq.com</p>
-                <p class="text-sm text-gray-600">+1 (925) 568-2358</p>
+                <p class="text-sm text-gray-600">An HCI Research Project by Tran, Venkitachalam, Parayno, Deja, and Deja</p>
+                <p class="text-sm text-gray-600">Built with 💖 in Austria, Germany, Slovenia, and the Philippines</p>
+                <p class="text-sm text-gray-600">Support concerns: richard@parayno.dev</p>
             </div>
         </div>
         <div class="w-4/5 p-4">
             <div class="p-8">
-                <h2 class="font-bold text-2xl mb-4">Index</h2>
-                <!-- Your content goes here -->
-                <form method="POST" enctype="multipart/form-data">
-                    {{ form.hidden_tag() }}
-                    <p>
-                        {{ form.goal.label }}<br>
-                        {{ form.goal }}
-                    </p>
-                    <p>
-                        {{ form.questions.label }}<br>
-                        {{ form.questions }}
-                    </p>
-                    <p>
-                        {{ form.hypotheses.label }}<br>
-                        {{ form.hypotheses }}
-                    </p>
-                    <p>
-                        {{ form.interview_transcripts.label }}<br>
-                        {{ form.interview_transcripts }}
-                    </p>
-                    <p>
-                        {{ form.submit() }}
-                    </p>
+                <h1 class="text-2xl font-bold mb-4">Research Form</h1>
+
+                <form  method="post" enctype="multipart/form-data" class="space-y-4">
+                    <div>
+                        <label class="block">Research Question:</label>
+                        <input type="text" name="research_question" class="border border-gray-400 p-2 w-full">
+                    </div>
+
+                    <div>
+                        <label class="block">Research Hypothesis:</label>
+                        <input type="text" name="research_hypothesis" class="border border-gray-400 p-2 w-full">
+                    </div>
+
+                    <div>
+                        <label class="block">Research Goal:</label>
+                        <input type="text" name="research_goal" class="border border-gray-400 p-2 w-full">
+                    </div>
+
+                    <div>
+                        <label class="block">Upload .txt File:</label>
+                        <input type="file" name="uploaded_file" accept=".txt" class="border border-gray-400 p-2 w-full">
+                    </div>
+
+                    <div>
+                        <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded">Generate</button>
+                    </div>
                 </form>
 
                 <!-- display result -->
