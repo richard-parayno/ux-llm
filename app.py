@@ -8,6 +8,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'YourSecretKey' # Replace with your own secret key
 app.config['UPLOAD_PATH'] = 'uploads'  # directory to save uploaded files
 
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     form = LLMParamsForm()

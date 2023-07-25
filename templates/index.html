@@ -2,46 +2,82 @@
 <html>
 <head>
     <title>UX LLM</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='dist/css/style.css')}}">
 </head>
-<body>
-    <h1>UX LLM</h1>
-    <form method="POST" enctype="multipart/form-data">
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.goal.label }}<br>
-            {{ form.goal }}
-        </p>
-        <p>
-            {{ form.questions.label }}<br>
-            {{ form.questions }}
-        </p>
-        <p>
-            {{ form.hypotheses.label }}<br>
-            {{ form.hypotheses }}
-        </p>
-        <p>
-            {{ form.interview_transcripts.label }}<br>
-            {{ form.interview_transcripts }}
-        </p>
-        <p>
-            {{ form.submit() }}
-        </p>
-
-    </form>
-    <!-- display result -->
-    {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            {% for category, message in messages %}
-            <div class="alert alert-{{ category }}">
-                {{ message }}
+<body class="bg-gray-200">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="w-1/5 bg-white p-4 shadow-lg flex flex-col h-screen">
+            <!-- Logo -->
+            <div class="mb-8">
+                <a href="index.html">
+                    <img class="mx-auto h-12 w-auto" src="logo.svg" alt="logo">
+                </a>
             </div>
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
+            <div class="flex-grow">
+                <div class="mb-8">
+                    <h3 class="font-bold text-xl mb-3">Features</h3>
+                    <ul class="list-disc list-inside">
+                        <li><a href="#" class="text-blue-600">Confidence Test</a></li>
+                        <li><a href="#" class="text-blue-600">UX LLM</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Divider -->
+            <div class="border-t border-gray-300"></div>
+            <!-- Company Details -->
+            <div class="p-4">
+                <p class="text-sm text-gray-600">Makisu.co LLC DBA NewsletterIQ.com</p>
+                <p class="text-sm text-gray-600">2261 Market Street, #5247</p>
+                <p class="text-sm text-gray-600">San Francisco, CA 94114-1612</p>
+                <p class="text-sm text-gray-600">support@newsletteriq.com</p>
+                <p class="text-sm text-gray-600">+1 (925) 568-2358</p>
+            </div>
+        </div>
+        <div class="w-4/5 p-4">
+            <div class="p-8">
+                <h2 class="font-bold text-2xl mb-4">Index</h2>
+                <!-- Your content goes here -->
+                <form method="POST" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+                    <p>
+                        {{ form.goal.label }}<br>
+                        {{ form.goal }}
+                    </p>
+                    <p>
+                        {{ form.questions.label }}<br>
+                        {{ form.questions }}
+                    </p>
+                    <p>
+                        {{ form.hypotheses.label }}<br>
+                        {{ form.hypotheses }}
+                    </p>
+                    <p>
+                        {{ form.interview_transcripts.label }}<br>
+                        {{ form.interview_transcripts }}
+                    </p>
+                    <p>
+                        {{ form.submit() }}
+                    </p>
+                </form>
 
-    {% if result %}
-        <h2>Result:</h2>
-        <p>{{ result }}</p>
-    {% endif %}
+                <!-- display result -->
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">
+                            {{ message }}
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+
+                {% if result %}
+                    <h2>Result:</h2>
+                    <p>{{ result }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 </body>
 </html>
