@@ -50,3 +50,45 @@ def confidence_test():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+@app.route('/new-home')
+def index_2():
+    return render_template('app_layout.html', title='Intavue')
+
+@app.route('/new-home/step1', methods=['GET', 'POST'])
+def step1():
+    # if request.method == 'POST':
+
+    return render_template('step1_research.html', title='Intavue')
+
+@app.route('/new-home/step2', methods=['GET', 'POST'])
+def step2_transcript():
+    if request.method == 'POST':
+        # Capture transcript data
+        transcript = request.form.get('transcript')
+        
+        # Process the transcript data (e.g., save to a database or analyze it)
+        # ...
+
+        # Redirect to the next step or provide some feedback
+        return redirect(url_for('step3_results'))
+
+    # Fetch the previous data to display to the user (pseudo code, replace with actual fetching logic)
+    research_goal = "User's research goal"  
+    research_questions = "User's research questions"
+    research_hypothesis = "User's research hypothesis"
+
+    # Render the template with the previous data
+    return render_template('step2_transcript.html', title='Transcript Step', 
+                           research_goal=research_goal, 
+                           research_questions=research_questions, 
+                           research_hypothesis=research_hypothesis)
+
+@app.route('/new-home/step3')
+def step3_results():
+    # This is just sample data for illustration. In a real scenario, you'd fetch the actual data.
+    system_results_content = "This is the generated system results based on your research and transcript."
+    transcript_content = "This is the content of your shared interview transcript."
+
+    return render_template('step3_results.html', system_results=system_results_content, transcript_content=transcript_content)

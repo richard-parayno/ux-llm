@@ -1,0 +1,42 @@
+{% extends 'app_layout.html' %}
+
+{% block content %}
+<div class="flex h-full">
+
+    <!-- Left Column -->
+    <div class="w-1/3 pr-8 flex flex-col">
+        <!-- Breadcrumbs -->
+        <ul class="flex space-x-4 mb-6">
+            <li class="text-gray-400"><a href="/step1">Research</a></li>
+            <li class="text-gray-500">/</li>
+            <li class="text-gray-400"><a href="/step2">Transcript</a></li>
+            <li class="text-gray-500">/</li>
+            <li class="text-orange-600 font-bold">Results</li>
+        </ul>
+
+        <!-- Results section -->
+        <div class="bg-white p-6 rounded-md shadow-md flex-grow relative">
+            <h1 class="text-xl font-bold bg-orange-200 p-2 rounded">Results</h1>
+            <div class="mt-4 overflow-y-auto">
+                <p>{{ system_results }}</p>
+            </div>
+        </div>
+
+        <!-- Continue button -->
+        <div class="bg-gradient-to-t from-black to-transparent p-6 flex justify-end mt-4">
+            <a href="/next_step" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Continue</a>
+        </div>
+    </div>
+
+    <!-- Right Column -->
+    <div class="w-2/3 flex flex-col">
+        <div class="bg-white p-6 rounded-md shadow-md flex-grow">
+            <h1 class="text-xl font-bold mb-4">Share Your Interview Transcript</h1>
+            <div class="overflow-y-auto">
+                <p>{{ transcript_content }}</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
