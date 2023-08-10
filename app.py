@@ -89,30 +89,12 @@ def step2_transcript():
 def step3_results():
     # This is just sample data for illustration. In a real scenario, you'd fetch the actual data.
     system_results_content = "This is the generated system results based on your research and transcript."
-    transcript_content = """[SPEAKER]: Right, so I'll just go ahead with the question. So for my first question, what prompted you to start your newsletter? And how would you assess your newsletter's performance currently?
-
-[SPEAKER]: Yes, so yeah, I've been writing newsletters for a while for different purposes, just to explore my curiosity and to share what I've learned with my audience. Right now, the latest one that I run is called "Super Frameworks." It's more focused around business ideas, strategies, marketing, and actionable frameworks for solopreneurs like my audience on Twitter and my newsletter audience. So that's the purpose. The monetization aspect of it is that I promote my own info products and communities via the newsletter. I have a big community and I have a bunch of courses and ebooks that I create. So I promote that. And I also monetize through ads, sponsorships, and affiliate products. That's the business model of the newsletter, but I haven't gone all in on it because it's not a priority for me. The business aspect is a priority for me right now.
-
-[SPEAKER]: Um, what platform are you currently using to send out your newsletter?
-
-[SPEAKER]: I use ConvertKit. I send it out through ConvertKit and I host the archive of the newsletter on my website.
-
-[SPEAKER]: Are you currently facing any hurdles or challenges in creating your newsletter? And I guess growing your newsletter and getting subscribers? What are the hurdles?
-
-[SPEAKER]: Yeah, getting subscribers is always hard, especially because Twitter is my primary audience and primary channel where my audience is. And promoting newsletters on Twitter is hard because external links are not appreciated. So whenever I post any external link about newsletter subscription, it doesn't do well. So that is one of the challenges in organic growth. I have tried out paid acquisition channels, which have given me balanced results. I tried out Twitter ads and I've tried out sponsoring other newsletters as well. I tried out cross-posting for organic growth, but that didn't go as well as I wanted it to go. But yeah, it's been up and down. I've tried a bunch of strategies and there have been some successes but not consistently.
-
-[SPEAKER]: So what strategy worked best for you in growing your newsletter?
-
-[SPEAKER]: Posting in communities like Reddit and going to indie hackers worked really well for me initially. And then posting on Twitter and Twitter was doing well, right? Whenever I have a viral tweet, I plug my newsletter under that and I get a bunch of subscribers from there. That is what worked the most. Apart from that, Twitter ads have been alright, but I haven't doubled down on them yet.
-
-[SPEAKER]: Okay, so could you explain why you haven't really doubled down on Twitter ads? Or what's the issue?
-
-[SPEAKER]: I have to crack the monetization aspect, right? I need a working funnel on the back end. Otherwise, what's the point of growing more subscribers if I cannot monetize them effectively? So I'm still testing the right offers and the right way to make it profitable for me.
-
-[SPEAKER]: Could you share with us how many subscribers you have for your newsletter?
-
-[SPEAKER]: At this point, I have 2900 subscribers. And that includes two or three newsletters that I had before, but now I have consolidated all into this one. So yeah, all of them combined are 2900.
-
+    transcript_content = """This is the generated system results based on your research and transcript.
 """
 
-    return render_template('step3_results.html', system_results=transcript_content, transcript_content=transcript_content)
+    return render_template('step3_results.html', system_results=system_results_content, transcript_content=transcript_content)
+
+@app.route('/new-home/thank-you')
+def step4_ty():
+
+    return render_template('step4_survey.html')

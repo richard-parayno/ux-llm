@@ -1,0 +1,15 @@
+{% extends 'app_layout.html' %}
+
+{% block content %}
+<div class="container mx-auto min-h-full flex flex-col items-center justify-center py-8">
+    <h1 class="text-4xl font-bold mb-6">Thank you for taking part in our research!</h1>
+    <p class="mb-2 mt-2">We are happy to see that you have come this far. Help us by filling out a short survey, this helps us build better tools for users like yourself.</p>
+    <p class="mb-2 mt-2">Note: Continuing to the survey will redirect you to an external page (Google Forms)</p>
+
+    <!-- Continue button -->
+    <div class="mt-9">
+        <a href="/new-home/thank-you" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Continue to survey</a>
+    </div>
+
+</div>
+{% endblock %}
