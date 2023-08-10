@@ -1,3 +1,48 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* PP Neue Montreal - Medium */
+@font-face {
+    font-family: 'PP Neue Montreal';
+    font-weight: 500; /* Medium weight */
+    font-style: normal;
+    src: url('ppneuemontreal-medium.woff2') format('woff2'),
+         url('ppneuemontreal-medium.woff') format('woff');
+}
+
+/* PP Neue Montreal - Regular */
+@font-face {
+    font-family: 'PP Neue Montreal';
+    font-weight: 400; /* Regular weight */
+    font-style: normal;
+    src: url('ppneuemontreal-regular.woff2') format('woff2'),
+            url('ppneuemontreal-regular.woff') format('woff');
+}
+
+/* PP Editorial New - Regular */
+@font-face {
+    font-family: 'PP Editorial New';
+    font-weight: 400; /* Regular weight */
+    font-style: normal;
+    src: url('ppeditorialnew-regular.woff2') format('woff2'),
+            url('ppeditorialnew-regular.woff') format('woff');
+}
+
+/* PP Editorial New - UltraLight */
+@font-face {
+    font-family: 'PP Editorial New';
+    font-weight: 200; /* UltraLight weight */
+    font-style: normal;
+    src: url('ppeditorialnew-ultralight.woff2') format('woff2'),
+            url('ppeditorialnew-ultralight.woff') format('woff');
+}
+
+/* PP Editorial New - UltraLight Italic */
+@font-face {
+    font-family: 'PP Editorial New';
+    font-weight: 200; /* UltraLight weight */
+    font-style: italic;
+    src: url('ppeditorialnew-ultralightitalic.woff2') format('woff2'),
+            url('ppeditorialnew-ultralightitalic.woff') format('woff');
+}
