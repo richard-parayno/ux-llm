@@ -1,55 +1,52 @@
 {% extends 'app_layout.html' %}
 
 {% block content %}
-<!-- Breadcrumbs -->
-<div class="container mx-auto flex flex-col items-center justify-center">
-    <ul class="flex space-x-4 mx-auto mb-9">
-        <li class="text-gray-700 uppercase">Research</li>
-        <li class="text-gray-700">/</li>
-        <li class="text-white-900 uppercase">Transcript</li>
-        <li class="text-gray-700">/</li>
-        <li class="text-gray-700 uppercase">Results</li>
-    </ul>
-</div>
-
-<div class="container mx-auto py-8 flex h-full">
+<div class="container mx-auto py-4 flex h-full">
     <!-- Left Column -->
-    <div class="w-1/3 pr-8">
+    <div class="w-1/3 pr-8 h-full flex flex-col">
+        <!-- Breadcrumbs -->
+        <div class="flex-shrink-0 mb-4">
+            <ul class="flex space-x-4">
+                <li class="text-gray-700 uppercase">Research</li>
+                <li class="text-gray-700">/</li>
+                <li class="text-white-900 uppercase">Transcript</li>
+                <li class="text-gray-700">/</li>
+                <li class="text-gray-700 uppercase">Results</li>
+            </ul>
+        </div>
         <!-- User's previous input -->
-        <div class="bg-black-layer p-11 rounded-md shadow-md h-full">
-            <div class="flex justify-between mb-4 font-editorial-new">
+        <div class="bg-black-layer p-11 rounded-md shadow-md flex flex-col overflow-auto">
+            <div class="flex justify-between pb-4 font-editorial-new">
                 <span class="text-4xl text-white-900 font-extralight">Your Research</span>
                 <button class="text-white-900 py-1.5  hover:text-white-800 border-b border-orange-900 text-xl">Edit</button>
             </div>
             <div>
                 <p class="text-white-800 uppercase font-extrabold mb-3">Research Goal</p>
-                <p class="mb-7">{{ research_goal }}</p>
+                <p class="mb-7">{{research_goal}}</p>
 
                 <p class="text-white-800 uppercase font-extrabold mb-3">Research Questions</p>
-                <p class="mb-7">{{ research_questions }}</p>
+                <p class="mb-7">{{research_questions}}</p>
 
                 <p class="text-white-800 uppercase font-extrabold mb-3">Research Hypothesis</p>
-                <p>{{ research_hypothesis }}</p>
+                <p>{{research_hypothesis}}</p>
             </div>
         </div>
     </div>
 
     <!-- Right Column -->
-    <div class="w-2/3">
-        <div class="bg-black-layer p-11 rounded-md shadow-md h-full">
-            <div class="flex justify-between items-center mb-4 font-editorial-new">
+    <div class="w-2/3 h-full">
+        <div class="bg-black-layer p-11 rounded-md shadow-md h-full flex flex-col"> <!-- Added flex and flex-col utilities -->
+            <div class="flex justify-between items-center pb-4 font-editorial-new flex-shrink-0"> <!-- Added flex-shrink-0 utility -->
                 <h1 class="text-4xl text-white-900 italic font-extralight">Share Your Interview Transcript</h1>
                 <button type="submit" form="transcriptForm" class="bg-gray-800 text-black-bg px-8 py-5 rounded-full">Generate Results</button>
             </div>
-
-            <form id="transcriptForm" method="post">
+            <form id="transcriptForm" method="post" class="flex flex-col h-full">
                 <label for="transcript" class="block mb-2">Paste or upload your interview transcript here</label>
-                <div class="flex-grow">
-                    <textarea id="transcript" name="transcript" rows="10" class="bg-black-layer w-full h-full px-3 py-2 overflow-y-scroll" required></textarea>
-                </div>
+                <textarea id="transcript" name="transcript" class="resize-none bg-black-layer overflow-y-scroll flex-grow" required></textarea> <!-- Added flex-grow utility -->
             </form>
         </div>
     </div>
+
 
 </div>
 {% endblock %}
