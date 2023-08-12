@@ -36,12 +36,30 @@ module.exports = {
       fontFamily: {
         'editorial-new': ['PP Editorial New', 'fallback-font'],
         'neue-montreal': ['PP Neue Montreal', 'fallback-font']
+      },
+      backgroundImage: theme => ({
+        'mesh-gradient': `
+          radial-gradient(at 40% 20%, hsla(11,0%,0%,1) 0px, transparent 50%),
+          radial-gradient(at 96% 48%, hsla(25,100%,50%,0.44) 0px, transparent 50%),
+          radial-gradient(at 0% 50%, hsla(284,73%,20%,1) 0px, transparent 50%),
+          radial-gradient(at 69% 69%, hsla(25,100%,50%,0.44) 0px, transparent 50%),
+          radial-gradient(at 0% 100%, hsla(283,73%,23%,1) 0px, transparent 50%),
+          radial-gradient(at 80% 100%, hsla(18,100%,55%,1) 0px, transparent 50%),
+          radial-gradient(at 0% 0%, hsla(340,0%,0%,1) 0px, transparent 50%)
+        `
+      }),
+      backgroundColor: {
+        'base-mesh': 'hsla(0,0%,0%,1)'
       }
     },
     
   },
   plugins: [
-
+    
   ],
+  corePlugins: {
+    transform: true,
+    rotate: true,
+  }
 }
 

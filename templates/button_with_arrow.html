@@ -1,0 +1,32 @@
+{% macro button_with_arrow(text="Continue to survey", link="#") %}
+<a href="{{ link }}" class="bg-orange-900 text-white px-8 py-5 rounded-full hover:bg-orange-800 text-black-bg font-editorial-new inline-flex items-center">
+    {{ text }}
+    <svg class="h-4 w-auto ml-4" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g id="arrow-right" clip-path="url(#clip0_332_121)">
+            <path id="Path 416" d="M8.79396 -0.000106812H10.174C10.9228 4.6854 14.2174 8.51067 18.9796 8.51067V9.48971C14.2174 9.48971 10.9228 13.315 10.174 18.0005H8.79396C9.42276 14.1158 11.6392 10.9428 14.5444 9.57883L0.976563 9.69764V8.30394L14.5444 8.42275C11.6392 7.05756 9.42276 3.88279 8.79396 -0.000106812Z" fill="#040404"/>
+        </g>
+    </svg>
+</a>
+{% endmacro %}
+
+{% macro button_with_arrow(text="Continue to survey", link="#", element_type="a") %}
+    {% if element_type == "a" %}
+        <a href="{{ link }}" class="bg-orange-900 text-white px-8 py-5 rounded-full hover:bg-orange-800 text-black-bg font-editorial-new inline-flex items-center">
+            {{ text }}
+            <svg class="h-4 w-auto ml-4" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="arrow-right" clip-path="url(#clip0_332_121)">
+                    <path id="Path 416" d="M8.79396 -0.000106812H10.174C10.9228 4.6854 14.2174 8.51067 18.9796 8.51067V9.48971C14.2174 9.48971 10.9228 13.315 10.174 18.0005H8.79396C9.42276 14.1158 11.6392 10.9428 14.5444 9.57883L0.976563 9.69764V8.30394L14.5444 8.42275C11.6392 7.05756 9.42276 3.88279 8.79396 -0.000106812Z" fill="#040404"/>
+                </g>
+            </svg>
+        </a>
+    {% elif element_type == "button" %}
+        <button type="submit" class="bg-orange-900 text-white px-8 py-5 rounded-full hover:bg-orange-800 text-black-bg font-editorial-new inline-flex items-center">
+            {{ text }}
+            <svg class="h-4 w-auto ml-4" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="arrow-right" clip-path="url(#clip0_332_121)">
+                    <path id="Path 416" d="M8.79396 -0.000106812H10.174C10.9228 4.6854 14.2174 8.51067 18.9796 8.51067V9.48971C14.2174 9.48971 10.9228 13.315 10.174 18.0005H8.79396C9.42276 14.1158 11.6392 10.9428 14.5444 9.57883L0.976563 9.69764V8.30394L14.5444 8.42275C11.6392 7.05756 9.42276 3.88279 8.79396 -0.000106812Z" fill="#040404"/>
+                </g>
+            </svg>
+        </button>
+    {% endif %}
+{% endmacro %}

@@ -10,14 +10,14 @@
 
 <!-- Sticky Navbar Component -->
 <nav class="bg-black-bg shadow-md sticky top-0 z-10 font-editorial-new">
-    <div class="container mx-auto py-4">
+    <div class="container mx-auto py-9">
         <div class="flex justify-between items-center">
             <!-- Logo -->
-            <a href="/new-home" class="text-xl font-bold text-white-900">
-                <img src="{{ url_for('static', filename='src/logo.svg')}}" alt="intavue.ai logo" class="mr-2 h-6 w-auto">
+            <a href="/new-home">
+                <img src="{{ url_for('static', filename='src/logo.svg')}}" alt="intavue.ai logo" class="mr-2 h-5 w-auto">
             </a>
             <!-- Links -->
-            <div class="flex space-x-4">
+            <div class="flex space-x-16 font-extralight items-center text-lg">
                 <a href="/learn" class="text-white-900 hover:text-white-900">Learn</a>
                 <a href="/team" class="text-white-900 hover:text-white-900">Team</a>
                 <a href="/contact" class="text-white-900 hover:text-white-900">Contact Us</a>
@@ -27,36 +27,41 @@
 </nav>
 
 <!-- Main Content - Takes up all available space -->
-<div class="flex-grow overflow-y-auto py-8 font-neue-montreal text-white-700 h-screen">
+<div class="flex-grow overflow-y-auto py-8 font-neue-montreal text-white-700 h-screen bg-base-mesh bg-mesh-gradient">
     {% block content %}{% endblock %}
 </div>
 
 <!-- Sticky Footer Component -->
 <footer class="bg-black-bg">
-    <div class="container mx-auto py-4 font-editorial-new">
+    <div class="container mx-auto py-12 font-editorial-new">
         <!-- First Row -->
-        <div class="flex justify-between items-center border-b-2 border-gray-700 pb-4">
+        <div class="flex justify-between items-start border-b-2 border-gray-700 pb-4">
             <!-- Left Column -->
             <div>
                 <!-- Logo -->
-                <a href="/new-home" class="text-xl font-bold text-white-900">
-                    <img src="{{ url_for('static', filename='src/logo.svg')}}" alt="intavue.ai logo" class="mb-3 h-6 w-auto">
+                <a href="/new-home">
+                    <img src="{{ url_for('static', filename='src/logo.svg')}}" alt="intavue.ai logo" class="mb-3 h-5 w-auto">
                 </a>
-                <p class="text-white-700">email@example.com</p>
-                <p class="text-white-700">+123-456-7890</p>
+                <div class="font-neue-montreal text-sm">
+                    <p class="text-white-700">📧 <a href="mailto:richard.parayno@stud.plus.ac.at" class="border-b border-1">richard.parayno@stud.plus.ac.at</a> for questions or technical concerns</p>
+                </div>
             </div>
             <!-- Right Column -->
-            <div class="flex space-x-6">
-                <div class="space-y-2">
+            <div class="flex space-x-28">
+                <div class="space-y-2 text-sm">
                     <a href="/learn" class="text-white-700 hover:text-white-900 block">Learn</a>
                     <a href="/team" class="text-white-700 hover:text-white-900 block">Team</a>
                     <a href="/contact" class="text-white-700 hover:text-white-900 block">Contact Us</a>
                 </div>
-                <button class="bg-orange-900 text-white-900 px-4 py-2 rounded hover:bg-orange-800">Share Feedback</button>
+                <button class="bg-transparent border border-orange-900 py-2 px-11 rounded-[50%] transform -rotate-12 hover:border-orange-800">
+                    <div class="transform rotate-12 inline-block">
+                        <span class="text-white-900 font-extralight">Share Feedback</span>
+                    </div>
+                </button>
             </div>
         </div>
         <!-- Second Row -->
-        <div class="flex justify-start space-x-4 mt-4">
+        <div class="flex justify-start space-x-4 mt-4 font-neue-montreal text-sm">
             <a href="/terms" class="text-white-700 hover:text-white-900">Terms of Service</a>
             <a href="/privacy" class="text-white-700 hover:text-white-900">Privacy Policy</a>
         </div>
