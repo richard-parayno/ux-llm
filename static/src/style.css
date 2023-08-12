@@ -7,8 +7,8 @@
     font-family: 'PP Neue Montreal';
     font-weight: 500; /* Medium weight */
     font-style: normal;
-    src: url('ppneuemontreal-medium.woff2') format('woff2'),
-         url('ppneuemontreal-medium.woff') format('woff');
+    src: url('/static/src/PPNeueMontreal-Medium.woff2') format('woff2'),
+         url('/static/src/PPNeueMontreal-Medium.woff') format('woff');
 }
 
 /* PP Neue Montreal - Regular */
@@ -16,8 +16,8 @@
     font-family: 'PP Neue Montreal';
     font-weight: 400; /* Regular weight */
     font-style: normal;
-    src: url('ppneuemontreal-regular.woff2') format('woff2'),
-            url('ppneuemontreal-regular.woff') format('woff');
+    src: url('/static/src/PPNeueMontreal-Regular.woff2') format('woff2'),
+            url('/static/src/PPNeueMontreal-Regular.woff') format('woff');
 }
 
 /* PP Editorial New - Regular */
@@ -25,8 +25,8 @@
     font-family: 'PP Editorial New';
     font-weight: 400; /* Regular weight */
     font-style: normal;
-    src: url('ppeditorialnew-regular.woff2') format('woff2'),
-            url('ppeditorialnew-regular.woff') format('woff');
+    src: url('/static/src/PPEditorialNew-Regular.woff2') format('woff2'),
+            url('/static/src/PPEditorialNew-Regular.woff') format('woff');
 }
 
 /* PP Editorial New - UltraLight */
@@ -34,8 +34,8 @@
     font-family: 'PP Editorial New';
     font-weight: 200; /* UltraLight weight */
     font-style: normal;
-    src: url('ppeditorialnew-ultralight.woff2') format('woff2'),
-            url('ppeditorialnew-ultralight.woff') format('woff');
+    src: url('/static/src/PPEditorialNew-Ultralight.woff2') format('woff2'),
+            url('/static/src/PPEditorialNew-Ultralight.woff') format('woff');
 }
 
 /* PP Editorial New - UltraLight Italic */
@@ -43,6 +43,6 @@
     font-family: 'PP Editorial New';
     font-weight: 200; /* UltraLight weight */
     font-style: italic;
-    src: url('ppeditorialnew-ultralightitalic.woff2') format('woff2'),
-            url('ppeditorialnew-ultralightitalic.woff') format('woff');
+    src: url('/static/src/PPEditorialNew-UltralightItalic.woff2') format('woff2'),
+            url('/static/src/PPEditorialNew-UltralightItalic.woff') format('woff');
 }

@@ -104,6 +104,7 @@ def oneshot_process(question, goal, hypothesis, transcript):
     chain = LLMChain(llm=llm, prompt=PROMPT)
     runLLM = chain.apply(inputs)
 
+    print(runLLM)
     #return the text output
     return runLLM[0]['text']
 

@@ -12,14 +12,14 @@
         <div class="bg-black-layer p-11 rounded-md shadow-md flex flex-col overflow-auto">
             <div class="flex justify-between pb-4 font-editorial-new">
                 <span class="text-4xl text-white-900 font-extralight">Your Research</span>
-                <button class="text-white-900 py-1.5  hover:text-white-800 border-b border-orange-900 text-xl">Edit</button>
+                <a href="{{ url_for('index') }}"class="text-white-900 py-1.5  hover:text-white-800 border-b border-orange-900 text-xl">Edit</a>
             </div>
             <div>
                 <p class="text-white-800 uppercase font-extrabold mb-3">Research Goal</p>
                 <p class="mb-7">{{research_goal}}</p>
 
                 <p class="text-white-800 uppercase font-extrabold mb-3">Research Questions</p>
-                <p class="mb-7">{{research_questions}}</p>
+                <p class="mb-7">{{research_question}}</p>
 
                 <p class="text-white-800 uppercase font-extrabold mb-3">Research Hypothesis</p>
                 <p>{{research_hypothesis}}</p>
@@ -32,9 +32,9 @@
         <div class="bg-black-layer p-11 rounded-md shadow-md h-full flex flex-col"> <!-- Added flex and flex-col utilities -->
             <div class="flex justify-between items-center pb-4 font-editorial-new flex-shrink-0"> <!-- Added flex-shrink-0 utility -->
                 <h1 class="text-4xl text-white-900 italic font-extralight">Share your <span class="italic">interview transcript</span></h1>
-                <button type="submit" form="transcriptForm" class="bg-gray-800 text-black-bg px-8 py-5 rounded-full">Generate Results</button>
+                <button type="submit" form="form_step2" class="bg-gray-800 text-black-bg px-8 py-5 rounded-full">Generate Results</button>
             </div>
-            <form id="transcriptForm" method="post" class="flex flex-col h-full">
+            <form id="form_step2" method="post" class="flex flex-col h-full">
                 <label for="transcript" class="block mb-2">Paste or upload your interview transcript here</label>
                 <textarea id="transcript" name="transcript" class="resize-none bg-black-layer overflow-y-scroll flex-grow" required></textarea> <!-- Added flex-grow utility -->
             </form>
