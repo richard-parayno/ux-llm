@@ -13,15 +13,7 @@
         <div class="bg-orange-100 rounded-2xl border-2 border-orange-900 shadow-md flex flex-grow flex-col h-full">
             <h1 class="mx-11 pt-11 text-4xl text-white-900 mb-4 font-editorial-new font-extralight">Results</h1>
             <div class="mx-11 overflow-y-auto flex-grow">
-                <p class="whitespace-pre-line">
-                    {% with messages = get_flashed_messages() %}
-                        {% if messages %}
-                            {% for message in messages %}
-                                {{ message|safe }}
-                            {% endfor %}
-                        {% endif %}
-                    {% endwith %}
-                </p>
+                <p class="whitespace-pre-line">{% if output %}{{ output }}{% endif %}</p>
             </div>
             <!-- Continue button -->
             <div class="p-11 bg-gradient-to-t from-[#000000] to-transparent rounded-b-2xl flex justify-end">
@@ -36,7 +28,7 @@
         <div class="bg-black-layer p-11 rounded-md shadow-md flex-grow flex flex-col h-full">
             <h1 class="text-4xl mb-4 font-editorial-new font-extralight text-white-900">Share your <span class="italic">interview transcript</span></h1>
             <div class="overflow-y-auto flex-grow">
-                <p class="whitespace-pre-line">{{ transcript }}</p>
+                <p class="whitespace-pre-line">{% if transcript %} {{ transcript }} {% endif %}</p>
             </div>
         </div>
     </div>

@@ -1,19 +1,35 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
-from forms import LLMParamsForm, LLMConfidenceForm
-from poc import llm_process #import llm processing logic
-from llm_logic import oneshot_process 
-from confidence_test import ct_process
+from llm_logic import oneshot_process #import llm processing logic
+from flask_session import Session
+from datetime import timedelta
+from clear_sessions import clear_session_files
 import os
-import json
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'YourSecretKey' # Replace with your own secret key
 app.config['UPLOAD_PATH'] = 'uploads'  # directory to save uploaded files
+app.config['SESSION_TYPE'] = 'filesystem'
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=6) # save user submitted records in the server for 6 hours before auto-delete
+
+# init session folder
+SESSION_FILE_DIR = os.path.join(os.getcwd(), 'flask_session')
+os.makedirs(SESSION_FILE_DIR, exist_ok=True)
+app.config['SESSION_FILE_DIR'] = SESSION_FILE_DIR
+
+# clear everything in sessions whenever the app reboots
+# clear_session_files(SESSION_FILE_DIR)
+
+#init session
+Session(app)
+
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    return render_template('step1_research.html')
+
 
 @app.route('/app/step-1', methods=['GET', 'POST'])
-def index():
+def step_1():
     if request.method == 'POST':
-        print(request.form)
         session['research_goal'] = request.form.get('research_goal')
         session['research_question'] = request.form.get('research_question')
         session['research_hypothesis'] = request.form.get('research_hypothesis')
@@ -30,17 +46,16 @@ def index():
     research_hypothesis = session.get('research_hypothesis')
     research_question = session.get('research_question')
 
-    return render_template('step1_research.html', research_goal=research_goal, research_hypothesis=research_hypothesis, research_question=research_question)
+    return render_template('step1_research.html', research_goal=research_goal, research_hypothesis=research_hypothesis, research_question=research_question, page_title='Intavue - Step 1')
 
 @app.route('/app/step-2', methods=['GET','POST'])
 def step_2():
     if not all(key in session for key in ['research_goal', 'research_question', 'research_hypothesis']):
     
         flash('error - either values are not being passed or you\'re not supposed to be here')
-        return redirect(url_for('index'))
+        return redirect(url_for('step_1'))
 
     if request.method == 'POST':
-        print(request.form)
         session['transcript'] = request.form['transcript']
 
         research_goal = session.get('research_goal')
@@ -49,28 +64,31 @@ def step_2():
         transcript = session.get('transcript')
 
         output = oneshot_process(research_question, research_goal, research_hypothesis, transcript)
-        output = output.replace('\n', '<br>')
-        flash(output)
+        # output = output.replace('\n', '<br>')
+        # flash(output, 'llm_response')
+        session['llm_response'] = output
+        
 
-        return render_template('step3_results.html', transcript=transcript)
+        return redirect(url_for('step_3'))
 
     # This block will handle the GET request which displays the form_step2 and previous data
     research_goal = session.get('research_goal')
     research_hypothesis = session.get('research_hypothesis')
     research_question = session.get('research_question')
 
-    return render_template('step2_transcript.html', research_question=research_question, research_goal=research_goal, research_hypothesis=research_hypothesis)
+    return render_template('step2_transcript.html', research_question=research_question, research_goal=research_goal, research_hypothesis=research_hypothesis, page_title='Intavue - Step 2')
 
-
-
-# @app.route('/app/step-3', methods=['GET', 'POST'])
-# def step_3():
-#     if not all(key in session for key in ['research_goal', 'research_question', 'research_hypothesis', 'transcript']):
-#         flash('error - either values are not being passed or you\'re not supposed to be here')
-#         return redirect(url_for('step_2'))
+@app.route('/app/step-3', methods=['GET', 'POST'])
+def step_3():
+    if not all(key in session for key in ['research_goal', 'research_question', 'research_hypothesis', 'transcript', 'llm_response']):
+        flash('error - either values are not being passed or you\'re not supposed to be here')
+        return redirect(url_for('step_1'))
     
-#     transcript = session.get('transcript')  
-#     return render_template('step3_results.html', transcript=transcript)
+    transcript = session.get('transcript')
+    output = session.get('llm_response')
+    print(output)
+
+    return render_template('step3_results.html', output=output, transcript=transcript, page_title='Intavue - Step 3')
 
 
 @app.route('/oneshot', methods=['POST'])
@@ -86,19 +104,10 @@ def generate():
         # # Replace newline characters with <br> tag
         output = output.replace('\n', '<br>')
 
-        flash(output)
+        flash(output, 'llm_response')
         return redirect(url_for('index'))
     
     return redirect(url_for('index'))
-
-@app.route('/confidence-test', methods=['GET', 'POST'])
-def confidence_test():
-    form = LLMConfidenceForm()
-    result = None #init result
-    if form.validate_on_submit():
-        result = ct_process(form.question_answer.data)
-
-    return render_template('confidence_test.html', form=form, result=result)
 
 
 if __name__ == '__main__':

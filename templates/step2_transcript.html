@@ -16,13 +16,13 @@
             </div>
             <div>
                 <p class="text-white-800 uppercase font-extrabold mb-3">Research Goal</p>
-                <p class="mb-7">{{research_goal}}</p>
+                <p class="mb-7">{% if research_goal %} {{ research_goal }} {% endif %}</p>
 
                 <p class="text-white-800 uppercase font-extrabold mb-3">Research Questions</p>
-                <p class="mb-7">{{research_question}}</p>
+                <p class="mb-7">{% if research_question %} {{ research_question }} {% endif %}</p>
 
                 <p class="text-white-800 uppercase font-extrabold mb-3">Research Hypothesis</p>
-                <p>{{research_hypothesis}}</p>
+                <p>{% if research_hypothesis %} {{ research_hypothesis }} {% endif %}</p>
             </div>
         </div>
     </div>
@@ -34,7 +34,7 @@
                 <h1 class="text-4xl text-white-900 italic font-extralight">Share your <span class="italic">interview transcript</span></h1>
                 <button type="submit" form="form_step2" class="bg-gray-800 text-black-bg px-8 py-5 rounded-full">Generate Results</button>
             </div>
-            <form id="form_step2" method="post" class="flex flex-col h-full">
+            <form id="form_step2" method="post" class="flex flex-col h-full" action="{{ url_for('step_2') }}">
                 <label for="transcript" class="block mb-2">Paste or upload your interview transcript here</label>
                 <textarea id="transcript" name="transcript" class="resize-none bg-black-layer overflow-y-scroll flex-grow" required></textarea> <!-- Added flex-grow utility -->
             </form>

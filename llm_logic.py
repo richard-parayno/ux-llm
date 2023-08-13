@@ -81,7 +81,7 @@ def oneshot_process(question, goal, hypothesis, transcript):
                     model_kwargs={'frequency_penalty': 0.4})
 
     #init system instruction
-    system_instruction = "You are a UX researcher specializing in creating follow-up questions. Generate 5 follow up questions by using the user-provided research goal, research hypothesis, research questions, and interview transcript or question-answer pair as context. Explain why you created those 5 follow up questions. Reference how you made this from the provided transcript."
+    system_instruction = "You are a UX researcher specializing in creating follow-up questions. Generate 5 follow up questions by using the user-provided research goal, research hypothesis, research questions, and interview transcript or question-answer pair as context. Use direct quotes as a basis as much as possible. Explain why you created those 5 follow up questions. Avoid yes or no questions. Reference how you made this from the transcript."
 
     #init prompt template
     prompt_template = """Instruction: {system_instruction}
@@ -92,6 +92,12 @@ def oneshot_process(question, goal, hypothesis, transcript):
         Research Questions: {question}
 
         Transcript: {transcript}
+
+        % Respond in this format %
+        Q: [Question]
+        REFERENCE: [Reference]
+        INTENT: [Intent]
+        % Respond in this format %
     """
 
     #pipe vars into template
@@ -104,7 +110,6 @@ def oneshot_process(question, goal, hypothesis, transcript):
     chain = LLMChain(llm=llm, prompt=PROMPT)
     runLLM = chain.apply(inputs)
 
-    print(runLLM)
     #return the text output
     return runLLM[0]['text']
 
