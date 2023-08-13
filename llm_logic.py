@@ -93,11 +93,10 @@ def oneshot_process(question, goal, hypothesis, transcript):
 
         Transcript: {transcript}
 
-        % Respond in this format %
+        % RESPOND IN THIS FORMAT:
         Q: [Question]
         REFERENCE: [Reference]
         INTENT: [Intent]
-        % Respond in this format %
     """
 
     #pipe vars into template
