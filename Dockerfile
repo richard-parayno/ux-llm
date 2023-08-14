@@ -15,4 +15,4 @@ RUN apt-get update && apt-get install -y g++
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
-CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:5000", "workers", "4"]
+CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:5000", "--workers", "4"]
