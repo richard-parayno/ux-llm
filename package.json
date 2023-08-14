@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "scripts": {
     "start": "flask run --debug",
-    "watch-css": "npx tailwindcss -i ./static/src/style.css -o ./static/dist/css/style.css --watch"
+    "watch-css": "npx tailwindcss -i ./static/src/style.css -o ./static/dist/css/style.css --watch",
+    "build": "npx tailwindcss -i ./static/src/style.css -o ./static/dist/css/style.css"
   },
   "devDependencies": {
     "chokidar-cli": "^3.0.0",
