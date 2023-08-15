@@ -29,9 +29,9 @@
 
     <!-- Right Column -->
     <div class="w-2/3 h-full">
-        <div class="bg-black-layer p-11 rounded-md shadow-md flex flex-col h-full"> <!-- Added flex and flex-col utilities -->
-            <div class="flex justify-between items-center pb-4 font-editorial-new flex-shrink-0"> <!-- Added flex-shrink-0 utility -->
-                <h1 class="text-4xl text-white-900 italic font-extralight">Share your <span class="italic">interview transcript</span></h1>
+        <div class="bg-black-layer p-11 rounded-md shadow-md flex flex-col h-full"> 
+            <div class="flex justify-between items-center pb-4 font-editorial-new flex-shrink-0"> 
+                <h1 id="transcript-header" class="text-4xl text-white-900 italic font-extralight">Share your <span class="italic">interview transcript</span></h1>
                 <button type="submit" form="form_step2" class="bg-orange-900 text-white px-8 py-5 rounded-full hover:bg-orange-800 text-black-bg font-editorial-new inline-flex items-center">
                     Generate Results
                     <svg class="h-4 w-auto ml-4" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -41,15 +41,56 @@
                     </svg>
                 </button>
             </div>
-            <form id="form_step2" method="post" class="flex flex-col h-full" action="{{ url_for('step_2') }}">
-                <label for="transcript" class="block mb-2"><span class="text-orange-900">Paste</span> your interview transcript here</label>
-                <textarea id="transcript" name="transcript" class="resize-none bg-black-layer overflow-y-scroll flex-grow" required></textarea> <!-- Added flex-grow utility -->
+            <form id="form_step2" method="post" class="flex flex-col flex-grow overflow-hidden" action="{{ url_for('step_2') }}">
+                <div id="loading-animation-container" class="hidden flex flex-col flex-grow items-center justify-center">
+                    <div id="loading-animation" class="w-16 h-16"></div>
+                    <p class="text-white-900 mt-4 mb-2 font-extralight font-editorial-new">While you wait, here's a tip:</p>
+                    <p class="text-gray-800 font-neue-montreal w-1/3 text-center">Reflect on the language and terms your participant uses to better relate to them and make them comfortable</p>
+                </div>
+                <label id="transcript-desc" for="transcript" class="block mb-2 flex-shrink-0"><span class="text-orange-900">Paste</span> your interview transcript here</label>
+                <textarea id="transcript" name="transcript" class="resize-none focus:border-none bg-black-layer overflow-y-scroll flex-grow" required></textarea> <!-- Added flex-grow utility -->
             </form>
         </div>
     </div>
 
 
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const button = document.querySelector('button[type="submit"]');
+    const transcriptHeader = document.getElementById('transcript-header');
+    const transcriptDesc = document.getElementById('transcript-desc');
+    const form = document.getElementById('form_step2');
+    const textarea = document.getElementById('transcript');
+    const loadingContainer = document.getElementById('loading-animation-container');
+    const loaderAnimationPath = "{{ url_for('static', filename='src/loader.json') }}";
+
+    button.addEventListener('click', function(event) {
+        event.preventDefault();
+
+        // Hide textarea and show loading animation
+        textarea.classList.add('hidden');
+        button.classList.add('hidden');
+        transcriptDesc.classList.add('hidden');
+        transcriptHeader.classList.add('hidden');
+        loadingContainer.classList.remove('hidden');
+
+        // Play the Lottie animation
+        lottie.loadAnimation({
+            container: document.getElementById('loading-animation'), // Required
+            path: loaderAnimationPath, // Required
+            renderer: 'svg', // Required
+            loop: true, // Optional
+            autoplay: true, // Optional
+        });
+
+        // Submit the form
+        form.submit();
+    });
+});
+
+</script>
 {% include 'footer.html'%}
 
 {% endblock %}
