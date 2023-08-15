@@ -6,7 +6,7 @@ from clear_sessions import clear_session_files
 import os
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'YourSecretKey' # Replace with your own secret key
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'fallbackSecretKey') 
 app.config['UPLOAD_PATH'] = 'uploads'  # directory to save uploaded files
 app.config['SESSION_TYPE'] = 'filesystem'
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=6) # save user submitted records in the server for 6 hours before auto-delete
@@ -112,10 +112,6 @@ def generate():
         return redirect(url_for('index'))
     
     return redirect(url_for('index'))
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
 
 
 @app.route('/new-home')
