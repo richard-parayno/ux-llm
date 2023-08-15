@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;">
+    <defs>
+        <pattern id="grain" patternUnits="userSpaceOnUse" width="4" height="4">
+            <circle cx="1" cy="1" r="1.0" fill="black" fill-opacity="0.3" />
+            <circle cx="3" cy="3" r="1.0" fill="black" fill-opacity="0.3" />
+        </pattern>
+    </defs>
+</svg>
+
+
+<style>
+.your-container {
+position: relative;
+}
+
+.your-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Ccircle cx='1' cy='1' r='1.0' fill='black' fill-opacity='0.3'/%3E%3Ccircle cx='3' cy='3' r='1.0' fill='black' fill-opacity='0.3'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.5; 
+    z-index: 1;  
+}
+.your-container > * {
+    position: relative;
+    z-index: 2;  
+}
+</style>

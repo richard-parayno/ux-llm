@@ -39,6 +39,7 @@ module.exports = {
       },
       backgroundImage: theme => ({
         'mesh-gradient': `
+          linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
           radial-gradient(at 40% 20%, hsla(11,0%,0%,1) 0px, transparent 50%),
           radial-gradient(at 96% 48%, hsla(25,100%,50%,0.44) 0px, transparent 50%),
           radial-gradient(at 0% 50%, hsla(284,73%,20%,1) 0px, transparent 50%),
@@ -50,7 +51,18 @@ module.exports = {
       }),
       backgroundColor: {
         'base-mesh': 'hsla(0,0%,0%,1)'
-      }
+      },
+      backgroundPosition: {
+        'grainy': '0 0, 1px 1px',
+      },
+      backgroundSize: {
+        'grainy': '2px 2px'
+      },
+      opacity: {
+        '40': '0.4',
+        '50': '0.5',
+        '100': '1.0'
+      },
     },
     
   },

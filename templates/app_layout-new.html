@@ -12,10 +12,15 @@
 {% include 'navbar.html' %}
 
 <!-- Main Content - Takes up all available space -->
-<div class="flex-grow overflow-y-auto pt-2 font-neue-montreal text-white-700 h-screen bg-base-mesh bg-mesh-gradient">
-    {% block content %}{% endblock %}
-</div>
+<div class="flex flex-col h-screen relative bg-base-mesh bg-mesh-gradient">
+    <!-- Gradient overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-50 z-0"></div>
 
+    <!-- Content Block - To ensure it stays on top of gradient overlay -->
+    <div class="flex-grow pt-2 font-neue-montreal text-white-700 z-10">
+        {% block content %}{% endblock %}
+    </div>
+</div>
 
 </style>
 

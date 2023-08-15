@@ -24,7 +24,11 @@ Session(app)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('step1_research.html')
+    return render_template('index.html')
+
+@app.route('/app/intro', methods=['GET', 'POST'])
+def step_intro():
+    return render_template('intro.html')
 
 
 @app.route('/app/step-1', methods=['GET', 'POST'])

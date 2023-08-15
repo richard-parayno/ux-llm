@@ -12,7 +12,7 @@
         <div class="bg-black-layer p-11 rounded-md shadow-md flex flex-col overflow-auto">
             <div class="flex justify-between pb-4 font-editorial-new">
                 <span class="text-4xl text-white-900 font-extralight">Your Research</span>
-                <a href="{{ url_for('index') }}"class="text-white-900 py-1.5  hover:text-white-800 border-b border-orange-900 text-xl">Edit</a>
+                <a href="{{ url_for('step_1') }}"class="text-white-900 py-1.5  hover:text-white-800 border-b border-orange-900 text-xl">Edit</a>
             </div>
             <div>
                 <p class="text-white-800 uppercase font-extrabold mb-3">Research Goal</p>
@@ -29,13 +29,20 @@
 
     <!-- Right Column -->
     <div class="w-2/3 h-full">
-        <div class="bg-black-layer p-11 rounded-md shadow-md h-full flex flex-col"> <!-- Added flex and flex-col utilities -->
+        <div class="bg-black-layer p-11 rounded-md shadow-md flex flex-col h-full"> <!-- Added flex and flex-col utilities -->
             <div class="flex justify-between items-center pb-4 font-editorial-new flex-shrink-0"> <!-- Added flex-shrink-0 utility -->
                 <h1 class="text-4xl text-white-900 italic font-extralight">Share your <span class="italic">interview transcript</span></h1>
-                <button type="submit" form="form_step2" class="bg-gray-800 text-black-bg px-8 py-5 rounded-full">Generate Results</button>
+                <button type="submit" form="form_step2" class="bg-orange-900 text-white px-8 py-5 rounded-full hover:bg-orange-800 text-black-bg font-editorial-new inline-flex items-center">
+                    Generate Results
+                    <svg class="h-4 w-auto ml-4" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="arrow-right" clip-path="url(#clip0_332_121)">
+                            <path id="Path 416" d="M8.79396 -0.000106812H10.174C10.9228 4.6854 14.2174 8.51067 18.9796 8.51067V9.48971C14.2174 9.48971 10.9228 13.315 10.174 18.0005H8.79396C9.42276 14.1158 11.6392 10.9428 14.5444 9.57883L0.976563 9.69764V8.30394L14.5444 8.42275C11.6392 7.05756 9.42276 3.88279 8.79396 -0.000106812Z" fill="#040404"/>
+                        </g>
+                    </svg>
+                </button>
             </div>
             <form id="form_step2" method="post" class="flex flex-col h-full" action="{{ url_for('step_2') }}">
-                <label for="transcript" class="block mb-2">Paste or upload your interview transcript here</label>
+                <label for="transcript" class="block mb-2"><span class="text-orange-900">Paste</span> your interview transcript here</label>
                 <textarea id="transcript" name="transcript" class="resize-none bg-black-layer overflow-y-scroll flex-grow" required></textarea> <!-- Added flex-grow utility -->
             </form>
         </div>
@@ -43,4 +50,6 @@
 
 
 </div>
+{% include 'footer.html'%}
+
 {% endblock %}

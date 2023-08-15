@@ -1,0 +1,17 @@
+<!-- Sticky Navbar Component -->
+<nav class="bg-black-bg shadow-md sticky top-0 z-20 font-editorial-new">
+    <div class="container mx-auto py-9">
+        <div class="flex justify-between items-center">
+            <!-- Logo -->
+            <a href="{{ url_for('index') }}">
+                <img src="{{ url_for('static', filename='src/logo.svg')}}" alt="intavue.ai logo" class="mr-2 h-5 w-auto">
+            </a>
+            <!-- Links -->
+            <div class="flex space-x-16 font-extralight items-center text-lg">
+                <a href="{{ url_for('step_intro') }}" class="text-white-900 hover:text-white-900">Learn</a>
+                <!-- <a href="/team" class="text-white-900 hover:text-white-900">Team</a> -->
+                <a href="/contact" class="text-white-900 hover:text-white-900">Contact Us</a>
+            </div>
+        </div>
+    </div>
+</nav>
