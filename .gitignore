@@ -1,7 +1,31 @@
-venv/
+node_modules
+
+# Output
+.output
+.vercel
+.netlify
+.wrangler
+/.svelte-kit
+/build
+
+# App data (SQLite databases, uploads) and eval runs
+/data
+/eval/results
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
 .env
-node_modules/
-__pycache__
-.chroma/
-index/
-flask_session/
+.env.*
+!.env.example
+!.env.test
+
+# Vite
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+
+# Playwright
+/test-results
+/playwright-report
